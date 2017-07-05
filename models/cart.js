@@ -1,12 +1,19 @@
 module.exports = function Cart(initItems) {
-    this.items = initItems;// initItems used from old cart items
+    this.items = initItems || {};;// initItems used from old cart items
     this.totalQty = 0;
     this.totalPrice = 0;
+    // console.log("From CART()");
+    // console.log(this.items);
 
     if (this.items) {
         for (var key in this.items) {
             this.totalQty += this.items[key].qty;
-            this.totalPrice += this.items[key].qty * this.items[key].item.price;
+            this.totalPrice = this.totalPrice + (this.items[key].qty * this.items[key].item.price);
+            // var mul =10 + (5*6);
+            console.log(this.totalPrice);
+            console.log(this.items[key].qty);
+            console.log(this.items[key].item.price);
+            // console.log(mul);
         }
     }
 
