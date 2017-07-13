@@ -13,8 +13,8 @@
                                 Action <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Reduce by 1</a></li>
-                                <li><a href="#">Remove All</a></li>
+                                <li><a href="/reduce/{{this.item._id}}">Reduce by 1</a></li>
+                                <li><a href="/remove/{{this.item._id}}">Remove All</a></li>
                             </ul>
                         </div>
                     </li>
@@ -33,7 +33,7 @@
             <a href="/checkout" type="button" class="btn btn-success">Checkout</a>
         </div>
     </div>
-    {{ else }}
+{{ else }}
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
             <h2>No Items in Cart yet!</h2>

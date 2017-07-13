@@ -4,19 +4,17 @@ module.exports = function Cart(initItems) {
     this.totalPrice = 0;
     // console.log("From CART()");
     // console.log(this.items);
-
     if (this.items) {
         for (var key in this.items) {
             this.totalQty += this.items[key].qty;
             this.totalPrice = this.totalPrice + (this.items[key].qty * this.items[key].item.price);
             // var mul =10 + (5*6);
-            console.log(this.totalPrice);
-            console.log(this.items[key].qty);
-            console.log(this.items[key].item.price);
+            // console.log(this.totalPrice);
+            // console.log(this.items[key].qty);
+            // console.log(this.items[key].item.price);
             // console.log(mul);
         }
     }
-
     this.add = function (item, id) {
         var storedItem = this.items[id];
         if (!storedItem) {
@@ -27,7 +25,23 @@ module.exports = function Cart(initItems) {
         this.totalQty++;
         this.totalPrice += storedItem.price;
     };
-
+    this.reduceByOne=function(id){
+        // console.log(this.items[id].item.price);
+        this.items[id].qty=this.items[id].qty-1;
+        this.items[id].price = this.items[id].price - this.items[id].item.price;
+        this.totalQty--;
+        this.totalPrice = this.totalPrice - this.items[id].item.price;
+        // console.log(this.totalPrice);
+        // console.log(this.items);
+        if(this.items[id].qty <=0){
+            delete this.items[id];
+        }
+    };
+    this.removeItem = function(id) {
+        this.totalQty -= this.items[id].qty;
+        this.totalPrice -= this.items[id].item.price;
+        delete this.items[id];
+    };
     this.generateArray = function () {
         var arr = [];
         for (var id in this.items) {
