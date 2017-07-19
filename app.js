@@ -15,7 +15,8 @@ var flash = require('connect-flash');
 var validator = require('express-validator');
 var MongoStore = require('connect-mongo')(session);
 
-mongoose.connect('mongodb://localhost:27017/shopping');
+mongoose.connect('mongodb://vaibhsa:123456@ds035985.mlab.com:35985/shopping');
+// mongoose.connect('mongodb://localhost:27017/shopping');
 require('./config/passport');
 // view engine setup
 
